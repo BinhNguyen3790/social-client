@@ -16,42 +16,22 @@ const styles = (theme) => ({
   ...theme.formSubmit
 })
 
-
 class login extends Component {
   constructor() {
     super();
     this.state = {
       email: '',
       password: '',
-      loading: false,
       errors: {}
     }
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      loading: true
-    });
     const userData = {
       email: this.state.email,
       password: this.state.password
     }
-    axios.post('/login', userData)
-      .then(res => {
-        console.log(res.data);
-        localStorage.setItem('FBIdToken', `Bearer ${res.data.token}`);
-        this.setState({
-          loading: false
-        });
-        this.props.history.push('/');
-      })
-      .catch(err => {
-        this.setState({
-          errors: err.response.data,
-          loading: false
-        })
-      })
   }
 
   handleChange = (event) => {
