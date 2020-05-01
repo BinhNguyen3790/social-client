@@ -20,7 +20,7 @@ import home from './pages/home';
 import login from './pages/login';
 import signup from './pages/signup';
 
-const theme = createMuiTheme(themeFile)
+const theme = createMuiTheme(themeFile);
 
 let authenticated;
 const token = localStorage.FBIdToken;
