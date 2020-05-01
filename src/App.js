@@ -4,16 +4,12 @@ import './App.css';
 // import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import themeFile from './until/theme';
+import themeFile from './util/theme';
 import jwtDecode from 'jwt-decode';
-
-// Redux
-import { Provider } from 'react-redux';
-import store from './redux/store';
 
 // Components
 import Navbar from './components/Navbar';
-import AuthRoute from './until/AuthRoute';
+import AuthRoute from './util/AuthRoute';
 
 // Pages
 import home from './pages/home';
@@ -27,7 +23,7 @@ const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {
-    window.location.href = '/login'
+    window.location.href = '/login';
     authenticated = false;
   } else {
     authenticated = true;
@@ -37,7 +33,7 @@ if (token) {
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <Provider store={store}>
+      <div className="App">
         <Router>
           <Navbar />
           <div className="container">
@@ -48,7 +44,7 @@ function App() {
             </Switch>
           </div>
         </Router>
-      </Provider>
+      </div>
     </MuiThemeProvider>
   );
 }
