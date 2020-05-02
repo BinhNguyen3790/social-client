@@ -23,7 +23,7 @@ import login from './pages/login';
 import signup from './pages/signup';
 import axios from 'axios';
 
-const theme = createMuiTheme(themeFile)
+const theme = createMuiTheme(themeFile);
 
 const token = localStorage.FBIdToken;
 if (token) {
