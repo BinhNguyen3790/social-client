@@ -62,6 +62,8 @@ export const uploadImage = (formData) => (dispatch) => {
     .catch(err => console.log(err));
 }
 
+export 
+
 const setAuthorizationHeader = (token) => {
   const FBIdToken = `Bearer ${token}`;
   localStorage.setItem('FBIdToken', FBIdToken);
