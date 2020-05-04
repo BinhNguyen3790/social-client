@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import Scream from '../components/Scream';
+import Profile from '../components/Profile';
 
 class home extends Component {
   state = {
@@ -18,7 +19,7 @@ class home extends Component {
   }
   render() {
     let recentScreamsMarkup = this.state.screams ? (
-      this.state.screams.map(scream => <Scream key={scream.screamId} scream={scream}/>)
+      this.state.screams.map(scream => <Scream key={scream.screamId} scream={scream} />)
     ) : <p>Loading...</p>
     return (
       <Grid container spacing={2}>
@@ -26,7 +27,7 @@ class home extends Component {
           {recentScreamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>Container...</p>
+          <Profile />
         </Grid>
       </Grid>
     )
