@@ -13,8 +13,8 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
-import { Tooltip } from '@material-ui/core';
 
 // Icons
 import EditIcon from '@material-ui/icons/Edit';
@@ -30,15 +30,6 @@ class EditDetails extends Component {
     location: '',
     open: false
   };
-
-  mapUserDetailsToState = (credentials) => {
-    this.setState({
-      bio: credentials.bio ? credentials.bio : '',
-      website: credentials.website ? credentials.website : '',
-      location: credentials.location ? credentials.location : '',
-    })
-  }
-
   handleOpen = () => {
     this.setState({ open: true })
     this.mapUserDetailsToState(this.props.credentials);
@@ -50,12 +41,20 @@ class EditDetails extends Component {
     const { credentials } = this.props;
     this.mapUserDetailsToState(credentials);
   }
+  mapUserDetailsToState = (credentials) => {
+    this.setState({
+      bio: credentials.bio ? credentials.bio : '',
+      website: credentials.website ? credentials.website : '',
+      location: credentials.location ? credentials.location : ''
+    })
+  }
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
   handleSubmit = () => {
+
     const userDetails = {
       bio: this.state.bio,
       website: this.state.website,
@@ -103,8 +102,8 @@ class EditDetails extends Component {
     )
   }
 }
-
-EditDetails.propTypes = {
+// error is here
+EditDetails.PropTypes = {
   editUserDetails: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 }
