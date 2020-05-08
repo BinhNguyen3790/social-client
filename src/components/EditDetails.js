@@ -20,7 +20,7 @@ import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 
 const styles = (theme) => ({
-  ...theme
+  ...theme.formStyles
 })
 
 class EditDetails extends Component {
@@ -103,7 +103,7 @@ class EditDetails extends Component {
   }
 }
 // error is here
-EditDetails.PropTypes = {
+EditDetails.propTypes = {
   editUserDetails: PropTypes.func.isRequired,
   classes: PropTypes.object.isRequired
 }
