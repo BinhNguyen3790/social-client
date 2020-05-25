@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import MyButton from '../../util/MyButton';
 import LikeButton from './LikeButton';
+import Comments from './Comments';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 
@@ -24,10 +25,6 @@ import { getScream } from '../../redux/actions/dataActions';
 
 const styles = theme => ({
   ...theme.formStyles,
-  invisibleSeparator: {
-    border: 'none',
-    margin: 4
-  },
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -64,7 +61,7 @@ class ScreamDialog extends Component {
     this.setState({ open: false });
   }
   render() {
-    const { classes, scream: { screamId, body, createdAt, likeCount, commentCount, userImage, userHandle },
+    const { classes, scream: { screamId, body, createdAt, likeCount, commentCount, userImage, userHandle, comments },
       UI: { loading }
     } = this.props;
     const dialogMarkup = loading ? (
@@ -100,6 +97,8 @@ class ScreamDialog extends Component {
             </MyButton>
             <span>{commentCount} Comments</span>
           </Grid>
+          <hr className={classes.visibleSeparator} />
+          <Comments comments={comments} />
         </Grid>
       )
     return (
