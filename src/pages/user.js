@@ -12,7 +12,7 @@ class user extends Component {
   state = {
     profile: null
   }
-  componentDitMount() {
+  componentDidMount() {
     const handle = this.props.match.params.handle;
     this.props.getUserData(handle);
     axios.get(`/user/${handle}`)
@@ -24,12 +24,12 @@ class user extends Component {
       .catch(err => console.log(err))
   }
   render() {
-    const { scream, loading } = this.props.data;
+    const { screams, loading } = this.props.data;
 
     const screamsMarkup = loading ? (
       <p>Loading data...</p>
-    ) : scream === null ? (
-      <p>No screams from this user</p>
+    ) : screams === null ? (
+      <p>No screams from this user</p>   
     ) : (
           screams.map(scream => <Scream key={scream.screamId} scream={scream} />)
         )
@@ -40,7 +40,9 @@ class user extends Component {
           {screamsMarkup}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <StaticProfile profile={this.state.profile} />
+          {this.state.profile === null ? (
+            <p>Loading profile...</p>
+          ) : (<StaticProfile profile={this.state.profile} />)}
         </Grid>
       </Grid>
     )
