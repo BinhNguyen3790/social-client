@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import PropType from 'prop-types';
+import PropTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
@@ -47,10 +47,6 @@ const styles = (theme) => ({
 });
 
 const StaticProfile = (props) => {
-
-}
-
-const StaticProfile = (props) => {
   const { classes, profile: { handle, createdAt, imageUrl, bio, website, location } } = props;
   return (
 
@@ -83,10 +79,6 @@ const StaticProfile = (props) => {
           )}
           <CalendarToday color="primary" /> {' '} <span>Joined {dayjs(createdAt).format('MM YYYY')}</span>
         </div>
-        <MyButton tip='Logout' onClick={this.handleLogout}>
-          <KeyboardReturn color='primary' />
-        </MyButton>
-        <EditDetails />
       </div>
     </Paper>
   )
